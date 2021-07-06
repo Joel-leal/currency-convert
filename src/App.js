@@ -12,7 +12,8 @@ function App() {
   const [ratio, setRatio] = useState(0);
 
   useEffect(() => {
-    let newRatio = exchangeRate[inputSelect] / exchangeRate[outputSelect];
+    let getRatio = exchangeRate[inputSelect] / exchangeRate[outputSelect];
+    let newRatio = parseFloat(getRatio.toFixed(2));
     setRatio(newRatio);
     console.log(inputSelect);
     console.log(outputSelect);
