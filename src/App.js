@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Select from "./Select";
 import exchangeRate from "./exChance";
 function App() {
-  // const [exchangeRate,setExchangeRate] = useState(1)
   const [value, setValue] = useState(0);
   const [inputSelect, setInputSelect] = useState("Real");
   const [outputSelect, setOutputSelect] = useState("Dolar");

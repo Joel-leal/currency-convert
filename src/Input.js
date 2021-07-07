@@ -6,6 +6,7 @@ export function Input({ disabled, label, value, onChange, onSelectChange }) {
   return (
     <div>
       <div>
+        <label className="traco"> - </label>
         <label>{label}</label>
       </div>
       <div>
