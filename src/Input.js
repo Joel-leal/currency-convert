@@ -1,22 +1,29 @@
 import React from "react";
 import "./App.css";
 import Select from "./Select";
+import currencyOptions from "./exChance";
 
-export function Input({ disabled, label, value, onChange, onSelectChange }) {
+export function Input({
+  disabled,
+  selectValue,
+  inputValue,
+  onChange,
+  onSelectChange,
+}) {
   return (
     <div>
       <div>
         <label className="traco"> - </label>
-        <label>{label}</label>
+        <label>{currencyOptions[selectValue]}</label>
       </div>
       <div>
         <input
           className="input"
-          value={value}
+          value={inputValue}
           disabled={disabled}
           onChange={onChange}
         />
-        <Select value={label} onChange={onSelectChange} />
+        <Select value={selectValue} onChange={onSelectChange} />
         <label className="traco"> - </label>
       </div>
     </div>

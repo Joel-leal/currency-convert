@@ -3,19 +3,26 @@ import "./App.css";
 import { Input } from "./Input";
 import { useEffect, useState } from "react";
 import Select from "./Select";
-import exchangeRate from "./exChance";
+import currencyOptions from "./exChance";
+
 function App() {
   const [value, setValue] = useState(0);
-  const [inputSelect, setInputSelect] = useState("Real");
-  const [outputSelect, setOutputSelect] = useState("Dolar");
+  const [inputSelect, setInputSelect] = useState("BRL");
+  const [outputSelect, setOutputSelect] = useState("USD");
   const [ratio, setRatio] = useState(0);
+  const [returnError, setReturnError] = useState("");
 
   useEffect(() => {
-    let getRatio = exchangeRate[inputSelect] / exchangeRate[outputSelect];
-    let newRatio = parseFloat(getRatio.toFixed(2));
-    setRatio(newRatio);
-    console.log(inputSelect);
-    console.log(outputSelect);
+    const value = `${inputSelect}-${outputSelect}`;
+    const responseKey = `${inputSelect}${outputSelect}`;
+    if (inputSelect === outputSelect) {
+      setRatio(1);
+      return;
+    }
+    fetch(`https://economia.awesomeapi.com.br/last/${value}`)
+      .then((response) => response.json())
+      .then((data) => setRatio(data[responseKey].low))
+      .catch((error) => setReturnError(error));
   }, [inputSelect, outputSelect]);
 
   const handleChange = (event) => {
@@ -24,23 +31,25 @@ function App() {
   };
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>Conversor de moedas</h2>
-        <div className="container">
-          <Input
-            value={value}
-            onChange={handleChange}
-            label={inputSelect}
-            onSelectChange={(e) => setInputSelect(e.target.value)}
-          />
-          <Input
-            value={parseFloat(value) * ratio}
-            label={outputSelect}
-            onSelectChange={(e) => setOutputSelect(e.target.value)}
-            disabled
-          />
-        </div>
-      </header>
+      <div className="container">
+        <header className="App-header">
+          <h2>Conversor de moedas</h2>
+          <div className="App-input">
+            <Input
+              inputValue={value}
+              onChange={handleChange}
+              selectValue={inputSelect}
+              onSelectChange={(e) => setInputSelect(e.target.value)}
+            />
+            <Input
+              inputValue={parseFloat(value) * parseFloat(ratio)}
+              selectValue={outputSelect}
+              onSelectChange={(e) => setOutputSelect(e.target.value)}
+              disabled
+            />
+          </div>
+        </header>
+      </div>
     </div>
   );
 }

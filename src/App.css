@@ -1,5 +1,8 @@
-.container {
+.App-input {
   display: flex;
+}
+.container {
+  background-color: dimgrey;
 }
 .App {
   text-align: center;
