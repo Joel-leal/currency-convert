@@ -1,6 +1,6 @@
 # currency-convert
 
-Esse exercício é um projeto da mentoria da PodCodar, envolvendo chamada de API em REACT. Em um primeiro momento usamos uma implementação simples por formulário de html. 
+Esse exercício é um projeto da mentoria da PodCodar, envolvendo chamada de API em REACT. Em um primeiro momento usamos uma implementação simples fazendo uma interação entre JS, HTML e CSS. 
 
 O projeto pode ser acessado pelo link abaixo.
 
