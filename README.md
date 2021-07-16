@@ -2,7 +2,7 @@
 
 Esse exercício é um projeto da mentoria da PodCodar, envolvendo chamada de API em REACT. Em um primeiro momento usamos uma implementação simples fazendo uma interação entre JS, HTML e CSS. [Link](https://joel-leal.github.io/localizando/)
 
-O projeto pode ser acessado pelo link abaixo.
+As conversões são entre as moedas do REAL - BRL, DOLAR - USD e EURO - EUR. O projeto pode ser acessado pelo link abaixo.
 
 [link do projeto](https://joel-leal.github.io/currency-convert/)
 
